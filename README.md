@@ -1,2 +1,2 @@
 # study-cards
-A simple flashcard application, really barebones. 
+This is a simple React application that uses localstorage to create a flashcard tool. 
