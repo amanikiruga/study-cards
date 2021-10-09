@@ -1,0 +1,84 @@
+html,
+body,
+#root {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+    margin-top: 6%;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:active .flip-card-inner,
+.flip-card.reveal-answer .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    min-height: 300px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    word-break: break-all;
+    font-size: 25px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 9% 9% 9% 9%;
+}
+
+.flip-card-front {
+    color: black;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.card-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-view-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.5% 2%;
+}
+.card-view-center {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
