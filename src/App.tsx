@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useEffect, useState } from "react";
+import AddCard, { Item } from "./AddCard";
+import "./App.css";
+import CardView from "./CardView";
+import { getStudyItems, saveStudyItems } from "./model/StudyItem";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: FC = () => {
+    const [isPracticingCards, setIsPracticingCards] = useState(false);
+    const [addedItems, setAddedItems] = useState<Item[]>(
+        getStudyItems() as Item[]
+    );
+    useEffect(() => {
+        saveStudyItems(addedItems);
+    }, addedItems);
+    return !isPracticingCards ? (
+        <AddCard
+            addedItems={addedItems}
+            setAddedItems={setAddedItems}
+            setIsPracticingCards={setIsPracticingCards}
+        />
+    ) : (
+        <CardView
+            setIsPracticingCards={setIsPracticingCards}
+            addedItems={addedItems}
+        />
+    );
+};
 
 export default App;
